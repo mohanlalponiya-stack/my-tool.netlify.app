@@ -1,97 +1,150 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <head>
     <meta charset="UTF-8">
-    <title>फ्री AI Background Remover | ऑनलाइन फोटो बैकग्राउंड हटाएँ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="AI की मदद से अपनी फोटो का बैकग्राउंड सिर्फ 5 सेकंड में मुफ्त में हटाएं। तेज़, आसान और HD क्वालिटी।">
-    <meta name="keywords" content="Remove BG, AI Background Remover, Free Photo Editor, बैकग्राउंड हटाएं, ऑनलाइन फोटो एडिटर">
+    <title>फ्री AI Background Remover | ऑनलाइन फोटो बैकग्राउंड हटाएँ</title>
+    <meta name="description" content="AI की मदद से अपनी फोटो का बैकग्राउंड सिर्फ 5 सेकंड में मुफ्त में हटाएँ। तेज़, आसान और HD क्वालिटी।">
+    <meta name="keywords" content="Remove BG, AI Background Remover, Free Photo Editor, बैकग्राउंड हटाएँ, ऑनलाइन फोटो एडिटर">
+    <meta name="robots" content="index, follow">
     
     <meta property="og:title" content="AI Background Remover - फ्री टूल">
     <meta property="og:description" content="सिर्फ एक क्लिक में अपनी फोटो का बैकग्राउंड हटाएँ।">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    
-    <meta charset="UTF-8">
-    <title>AI Background Remover - फ्री टूल</title>
-    <style>
-        body { font-family: 'Arial', sans-serif; text-align: center; background: #f4f4f9; padding: 50px; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: inline-block; }
-        input { margin: 20px 0; }
-        button { background: #6200ea; color: white; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; }
-        #result { margin-top: 20px; max-width: 500px; border-radius: 10px; }
-        .loader { display: none; color: #6200ea; font-weight: bold; }
-    </style>
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        /* आधुनिक और सुंदर डिजाइन */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
+            padding: 20px; 
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card { 
+            background: white; 
+            padding: 40px 20px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
+            max-width: 450px; 
+            width: 100%;
+        }
+        h1 { color: #333; font-size: 24px; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; }
+        input { margin: 25px 0; font-size: 14px; width: 100%; }
+        
+        button { 
+            background: #6200ea; 
+            color: white; 
+            border: none; 
+            padding: 12px 30px; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            font-weight: bold;
+            transition: 0.3s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button:hover { background: #4500b5; transform: translateY(-2px); }
+        
+        #result { 
+            margin-top: 25px; 
+            max-width: 100%; 
+            border-radius: 12px; 
+            border: 2px solid #eee;
+            display: none;
+        }
+        .loader { 
+            display: none; 
+            color: #6200ea; 
+            font-weight: bold; 
+            margin-top: 20px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>✨ AI Background Remover</h1>
-        <p>अपनी फोटो अपलोड करें और जादू देखें!</p>
-        
-        <input type="file" id="fileInput" accept="image/*">
-        <br>
-        <button onclick="removeBackground()">बैकग्राउंड हटाएँ</button>
-        
-        <div id="loader" class="loader">प्रोसेस हो रहा है... कृपया रुकें...</div>
-        <br>
-        <img id="result" src="" alt="आपका रिजल्ट यहाँ दिखेगा" style="display:none;">
-        <br>
-        <button id="downloadBtn" style="display:none; background:#28a745;" onclick="downloadImg()">डाउनलोड करें</button>
-    </div>
+    <div class="card">
+        <h1>✨ AI Background Remover</h1>
+        <p>अपनी फोटो अपलोड करें और जादू देखें!</p>
+        
+        <input type="file" id="fileInput" accept="image/*">
+        <br>
+        <button onclick="removeBackground()">बैकग्राउंड हटाएँ</button>
+        
+        <div id="loader" class="loader">AI जादू कर रहा है... कृपया रुकें...</div>
+        
+        <img id="result" src="" alt="आपका रिजल्ट यहाँ दिखेगा">
+        
+        <button id="downloadBtn" style="display:none; background:#28a745; margin-top: 15px;" onclick="downloadImg()">💾 डाउनलोड करें</button>
+        
+        <p style="font-size: 10px; color: #999; margin-top: 20px;">Powered by AI Technology</p>
+    </div>
 
-    <script>
-        async function removeBackground() {
-            const fileInput = document.getElementById('fileInput');
-            const loader = document.getElementById('loader');
-            const resultImg = document.getElementById('result');
-            const downloadBtn = document.getElementById('downloadBtn');
+    <script>
+        async function removeBackground() {
+            const fileInput = document.getElementById('fileInput');
+            const loader = document.getElementById('loader');
+            const resultImg = document.getElementById('result');
+            const downloadBtn = document.getElementById('downloadBtn');
 
-            if (fileInput.files.length === 0) {
-                alert("कृपया पहले एक फोटो चुनें!");
-                return;
-            }
+            if (fileInput.files.length === 0) {
+                alert("कृपया पहले एक फोटो चुनें!");
+                return;
+            }
 
-            loader.style.display = "block";
-            const file = fileInput.files[0];
-            const formData = new FormData();
-            formData.append('image_file', file);
-            formData.append('size', 'auto');
+            loader.style.display = "block";
+            resultImg.style.display = "none";
+            downloadBtn.style.display = "none";
 
-            // अपनी API Key यहाँ डालें (Remove.bg से मिली हुई)
-            const apiKey = "p2rfgyQdxMnQMumkJqAVEE9W"; 
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('image_file', file);
+            formData.append('size', 'auto');
 
-            try {
-                const response = await fetch('https://api.remove.bg/v1.0/removebg', {
-                    method: 'POST',
-                    headers: { 'X-Api-Key': apiKey },
-                    body: formData
-                });
+            const apiKey = "p2rfgyQdxMnQMumkJqAVEE9W"; 
 
-                if (response.ok) {
-                    const blob = await response.blob();
-                    const url = URL.createObjectURL(blob);
-                    resultImg.src = url;
-                    resultImg.style.display = "block";
-                    downloadBtn.style.display = "inline-block";
-                } else {
-                    alert("API में कोई दिक्कत है या लिमिट खत्म हो गई है।");
-                }
-            } catch (error) {
-                console.error(error);
-                alert("कुछ गलत हुआ!");
-            } finally {
-                loader.style.display = "none";
-            }
-        }
+            try {
+                const response = await fetch('https://api.remove.bg/v1.0/removebg', {
+                    method: 'POST',
+                    headers: { 'X-Api-Key': apiKey },
+                    body: formData
+                });
 
-        function downloadImg() {
-            const link = document.createElement('a');
-            link.href = document.getElementById('result').src;
-            link.download = 'no-bg-image.png';
-            link.click();
-        }
-    </script>
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = URL.createObjectURL(blob);
+                    resultImg.src = url;
+                    resultImg.style.display = "block";
+                    downloadBtn.style.display = "block";
+                } else {
+                    const err = await response.json();
+                    alert("गलती: " + err.errors[0].title);
+                }
+            } catch (error) {
+                console.error(error);
+                alert("नेटवर्क में कोई समस्या है!");
+            } finally {
+                loader.style.display = "none";
+            }
+        }
+
+        function downloadImg() {
+            const link = document.createElement('a');
+            link.href = document.getElementById('result').src;
+            link.download = 'PhotoMagic_AI_Result.png';
+            link.click();
+        }
+    </script>
 </body>
 </html>
