@@ -10,13 +10,9 @@
     <meta name="keywords" content="Remove BG, AI Background Remover, Free Photo Editor, बैकग्राउंड हटाएँ, ऑनलाइन फोटो एडिटर">
     <meta name="robots" content="index, follow">
     
-    <meta property="og:title" content="AI Background Remover - फ्री टूल">
-    <meta property="og:description" content="सिर्फ एक क्लिक में अपनी फोटो का बैकग्राउंड हटाएँ।">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
-        /* आधुनिक और सुंदर डिजाइन */
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             text-align: center; 
@@ -55,6 +51,43 @@
         }
         button:hover { background: #4500b5; transform: translateY(-2px); }
         
+        /* Animation for Social Links */
+        .social-container {
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .social-container h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-icon {
+            text-decoration: none;
+            font-size: 28px;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .social-icon span {
+            font-size: 10px;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        /* Instagram Color & Animation */
+        .insta { color: #E1306C; }
+        .insta:hover { transform: scale(1.3) rotate(10deg); color: #bc2a8d; }
+        
+        /* Facebook Color & Animation */
+        .fb { color: #1877F2; }
+        .fb:hover { transform: scale(1.3) rotate(-10deg); color: #145dbf; }
+
         #result { 
             margin-top: 25px; 
             max-width: 100%; 
@@ -88,7 +121,21 @@
         
         <button id="downloadBtn" style="display:none; background:#28a745; margin-top: 15px;" onclick="downloadImg()">💾 डाउनलोड करें</button>
         
-        <p style="font-size: 10px; color: #999; margin-top: 20px;">Powered by AI Technology</p>
+        <div class="social-container">
+            <h3>Follow Developer: MOHAN LAL POONIYA</h3>
+            <div class="social-links">
+                <a href="https://www.instagram.com/m_p_choudhary_09?igsh=MTJuZmFwNHJsZTZucA==" target="_blank" class="social-icon insta">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.facebook.com/mohanlal.puniya.52?mibextid=ZbWKwL" target="_blank" class="social-icon fb">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+            </div>
+        </div>
+
+        <p style="font-size: 10px; color: #999; margin-top: 25px;">Powered by AI Technology</p>
     </div>
 
     <script>
